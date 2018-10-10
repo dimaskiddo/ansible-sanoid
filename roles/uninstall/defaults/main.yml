@@ -1,0 +1,6 @@
+---
+# Default Value for Sanoid ZFS Dataset Name
+sanoid_zfs_dataset: 'data/persistent'
+
+# Default Value for Syncoid Master
+syncoid_master: false

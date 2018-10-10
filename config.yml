@@ -1,0 +1,15 @@
+---
+- hosts: all
+  any_errors_fatal: true
+  roles:
+  - role: common
+
+- hosts: sanoid
+  any_errors_fatal: true
+  roles:
+  - role: sanoid
+
+- hosts: syncoid
+  any_errors_fatal: true
+  roles:
+  - role: syncoid

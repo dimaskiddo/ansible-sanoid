@@ -1,0 +1,6 @@
+---
+- include: syncoid_configs.yml
+
+- include: syncoid_scripts.yml
+
+- include: syncoid_crons.yml

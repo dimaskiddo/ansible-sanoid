@@ -1,0 +1,6 @@
+---
+- include: sanoid_configs.yml
+
+- include: sanoid_scripts.yml
+
+- include: sanoid_crons.yml

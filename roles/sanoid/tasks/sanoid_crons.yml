@@ -1,0 +1,9 @@
+---
+- name: Configure Sanoid Cron Job
+  cron:
+    name: sanoid-cron
+    job: /usr/local/bin/sanoid-cron
+    minutes: "{{ sanoid_cron_minutes }}"
+    hours: "{{ sanoid_cron_hours }}"
+    user: root
+    state: present

@@ -1,0 +1,21 @@
+---
+- name: Install Syncoid Dependencies Packages
+  apt:
+    name: "{{ item }}"
+    force_apt_get: yes
+    update_cache: yes
+    autoremove: yes
+    autoclean: yes
+    state: present
+  with_items:
+    - pv
+    - lzop
+    - mbuffer
+
+- name: Install Syncoid Binary
+  get_url:
+    url: https://raw.githubusercontent.com/jimsalterjrs/sanoid/master/syncoid
+    dest: /usr/local/bin/syncoid
+    owner: root
+    group: root
+    mode: 0755

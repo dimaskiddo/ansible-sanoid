@@ -1,0 +1,57 @@
+---
+# Default Value for Host IP
+sanoid_ip: "{{ ansible_default_ipv4.address }}"
+
+# Default Value for Sanoid Cron Hours
+sanoid_cron_hours: 4
+
+# Default Value for Sanoid Cron Minutes
+sanoid_cron_minutes: 0
+
+# Default Value for Sanoid Keep Hourly Snapshot
+sanoid_snapshot_keep_hourly: 1
+
+# Default Value for Sanoid Keep Daily Snapshot
+sanoid_snapshot_keep_daily: 3
+
+# Default Value for Sanoid Keep Monthly Snapshot
+sanoid_snapshot_keep_monthly: 1
+
+# Default Value for Sanoid Keep Yearly Snapshot
+sanoid_snapshot_keep_yearly: 0
+
+# Default Value for Sanoid Auto Snapshot
+sanoid_auto_snap: true
+
+# Default Value for Sanoid Auto Prune
+sanoid_auto_prune: true
+
+# Default Value for Sanoid ZFS Dataset Name
+sanoid_zfs_dataset: 'data/persistent'
+
+# Default Value for Sanoid ZFS Process Childern Only
+sanoid_zfs_process_childern_only: true
+
+# Default Value for Sanoid ZFS Recursive Snapshot
+sanoid_zfs_recursive: true
+
+# Default Value for Syncoid Cron Hours
+syncoid_cron_hours: 23
+
+# Default Value for Syncoid Cron Minutes
+syncoid_cron_minutes: 0
+
+# Default Value for Syncoid Keep Hourly Snapshot
+syncoid_snapshot_keep_hourly: 0
+
+# Default Value for Syncoid Keep Daily Snapshot
+syncoid_snapshot_keep_daily: 14
+
+# Default Value for Syncoid Keep Monthly Snapshot
+syncoid_snapshot_keep_monthly: 3
+
+# Default Value for Syncoid Keep Yearly Snapshot
+syncoid_snapshot_keep_yearly: 0
+
+# Default Value for Syncoid Master
+syncoid_master: false

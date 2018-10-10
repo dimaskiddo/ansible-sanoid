@@ -1,0 +1,10 @@
+---
+- name: Kill All Syncoid Process
+  shell: killall syncoid || true
+  args:
+    warn: false
+
+- name: Uninstall Syncoid Binary
+  file:
+    path: /usr/local/bin/syncoid
+    state: absent

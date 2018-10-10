@@ -1,0 +1,9 @@
+[all:vars]
+sanoid_zfs_dataset=data/persistent
+
+[sanoid]
+10.10.250.13 syncoid_master=true
+10.10.250.15
+
+[syncoid]
+10.10.250.15

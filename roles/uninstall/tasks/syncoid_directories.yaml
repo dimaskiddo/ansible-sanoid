@@ -1,0 +1,5 @@
+---
+- name: Uninstall Syncoid Log
+  file:
+    path: /var/log/syncoid-cron.log
+    state: absent

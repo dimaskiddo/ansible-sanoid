@@ -1,0 +1,20 @@
+---
+- include: facts.yml
+
+- include: os_packages.yml
+
+- include: sanoid_directories.yml
+  when:
+    - inventory_hostname in groups['sanoid']
+
+- include: sanoid_packages.yml
+  when:
+    - inventory_hostname in groups['sanoid']
+
+- include: syncoid_directories.yml
+  when:
+    - inventory_hostname in groups['syncoid']
+
+- include: syncoid_packages.yml
+  when:
+    - inventory_hostname in groups['syncoid']

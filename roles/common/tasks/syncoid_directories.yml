@@ -1,0 +1,10 @@
+---
+- name: Create Syncoid Directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    recurse: true
+  with_items:
+    - /usr/local/bin

@@ -1,0 +1,56 @@
+---
+- name: Fail if Operating System is not Supported
+  fail:
+    msg: "Minimum Operating System Version Ubuntu 14.04"
+  when:
+    - ansible_distribution != 'Ubuntu'
+    - ansible_distribution_major_version | int >= 14
+
+- name: Get Service Init Status
+  stat:
+    path: /sbin/init
+  register: service_init_status
+
+- name: Get ZFS Path Info
+  shell: which zfs || true
+  args:
+    warn: false
+  register: zfs_path_info
+
+- name: Fail if ZFS Path not Found
+  fail:
+    msg: "ZFS Packages Required"
+  when:
+    - zfs_path_info.stdout.find("zfs") == -1
+
+- name: Get ZFS Dataset Lists
+  shell: zfs list
+  register: zfs_dataset_lists
+
+- name: Set Host Facts
+  set_fact:
+    sanoid_ip: "{{ sanoid_ip | default(default_value, true) }}"
+    sanoid_cron_hours: "{{ sanoid_cron_hours | default(default_value, true) }}"
+    sanoid_cron_minutes: "{{ sanoid_cron_minutes | default(default_value, true) }}"
+    sanoid_snapshot_keep_hourly: "{{ sanoid_snapshot_keep_hourly | default(default_value, true) }}"
+    sanoid_snapshot_keep_daily: "{{ sanoid_snapshot_keep_daily | default(default_value, true) }}"
+    sanoid_snapshot_keep_monthly: "{{ sanoid_snapshot_keep_monthly | default(default_value, true) }}"
+    sanoid_snapshot_keep_yearly: "{{ sanoid_snapshot_keep_yearly | default(default_value, true) }}"
+    sanoid_auto_snap: "{{ sanoid_auto_snap | default(default_value, true) }}"
+    sanoid_auto_prune: "{{ sanoid_auto_prune | default(default_value, true) }}"
+    sanoid_zfs_dataset: "{{ sanoid_zfs_dataset | default(default_value, true) }}"
+    sanoid_zfs_process_childern_only: "{{ sanoid_zfs_process_childern_only | default(default_value, true) }}"
+    sanoid_zfs_recursive: "{{ sanoid_zfs_recursive | default(default_value, true) }}"
+    syncoid_cron_hours: "{{ syncoid_cron_hours | default(default_value, true) }}"
+    syncoid_cron_minutes: "{{ syncoid_cron_minutes | default(default_value, true) }}"
+    syncoid_snapshot_keep_hourly: "{{ syncoid_snapshot_keep_hourly | default(default_value, true) }}"
+    syncoid_snapshot_keep_daily: "{{ syncoid_snapshot_keep_daily | default(default_value, true) }}"
+    syncoid_snapshot_keep_monthly: "{{ syncoid_snapshot_keep_monthly | default(default_value, true) }}"
+    syncoid_snapshot_keep_yearly: "{{ syncoid_snapshot_keep_yearly | default(default_value, true) }}"
+    sanoid_master: "{{ sanoid_master | default(default_value, true) }}"
+
+- name: Fail if ZFS Dataset not Found
+  fail:
+    msg: "ZFS Dataset not Found"
+  when:
+    - zfs_dataset_lists.stdout.find(sanoid_zfs_dataset) != -1

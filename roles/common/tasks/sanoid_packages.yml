@@ -1,0 +1,27 @@
+---
+- name: Install Sanoid Dependencies Packages
+  apt:
+    name: "{{ item }}"
+    force_apt_get: yes
+    update_cache: yes
+    autoremove: yes
+    autoclean: yes
+    state: present
+  with_items:
+    - libconfig-inifiles-perl
+
+- name: Install Sanoid Binary
+  get_url:
+    url: https://raw.githubusercontent.com/jimsalterjrs/sanoid/master/sanoid
+    dest: /usr/local/bin/sanoid
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install Sanoid Defaults Configuration
+  get_url:
+    url: https://raw.githubusercontent.com/jimsalterjrs/sanoid/master/sanoid.defaults.conf
+    dest: /etc/sanoid/sanoid.defaults.conf
+    owner: root
+    group: root
+    mode: 0644

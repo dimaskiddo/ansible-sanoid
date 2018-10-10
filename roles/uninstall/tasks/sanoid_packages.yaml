@@ -1,0 +1,10 @@
+---
+- name: Kill All Sanoid Process
+  shell: killall sanoid || true
+  args:
+    warn: false
+
+- name: Uninstall Sanoid Binary
+  file:
+    path: /usr/local/bin/sanoid
+    state: absent

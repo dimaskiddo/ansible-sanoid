@@ -1,0 +1,9 @@
+---
+- name: Configure Syncoid Cron Job
+  cron:
+    name: syncoid-cron
+    job: /usr/local/bin/syncoid-cron
+    minutes: "{{ syncoid_cron_minutes }}"
+    hours: "{{ syncoid_cron_hours }}"
+    user: root
+    state: present

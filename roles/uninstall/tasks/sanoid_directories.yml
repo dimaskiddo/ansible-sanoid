@@ -1,0 +1,20 @@
+---
+- name: Uninstall Sanoid Defaults Configuration
+  file:
+    path: /etc/sanoid/sanoid.defaults.conf
+    state: absent
+
+- name: Uninstall Sanoid Configuration
+  file:
+    path: /etc/sanoid/sanoid.conf
+    state: absent
+
+- name: Uninstall Sanoid Configuration Directory
+  file:
+    path: /etc/sanoid
+    state: absent
+
+- name: Uninstall Sanoid Log
+  file:
+    path: /var/log/sanoid-cron.log
+    state: absent

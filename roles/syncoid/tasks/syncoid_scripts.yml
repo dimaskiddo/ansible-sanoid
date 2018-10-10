@@ -1,0 +1,8 @@
+---
+- name: Generate Syncoid Cron Scripts
+  template:
+    src: syncoid-cron.j2
+    dest: /usr/local/bin/syncoid-cron
+    owner: root
+    group: root
+    mode: 0755

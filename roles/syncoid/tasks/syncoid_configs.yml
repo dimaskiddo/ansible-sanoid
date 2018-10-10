@@ -1,0 +1,10 @@
+---
+- name: Create Syncoid Log
+  file:
+    path: "{{ item }}"
+    state: touch
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - /var/log/syncoid-cron.log

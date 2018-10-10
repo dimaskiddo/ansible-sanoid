@@ -1,0 +1,21 @@
+#!/bin/bash
+
+(
+ echo "--------------------------------------------------"
+ echo $(date) syncoid start
+ echo ""
+
+ {% for sanoid_host in groups['sanoid'] %}
+ {%   if hostvars[sanoid_host].syncoid_master %}
+ echo "Backing-up {{ sanoid_zfs_dataset }} from {{ hostvars[sanoid_host].syncoid_ip }}"
+ zfs create -p {{ sanoid_zfs_dataset }}/{{ hostvars[sanoid_host].syncoid_ip }}
+ syncoid -r syncoid@{{ hostvars[sanoid_host].syncoid_ip }}:{{ sanoid_zfs_dataset }} {{ sanoid_zfs_dataset }}/{{ hostvars[sanoid_host].syncoid_ip }}
+ echo "" 
+ {%   endif %}
+ {% endfor %}
+
+ echo $(date) syncoid end
+ echo "--------------------------------------------------" 
+) >> /var/log/syncoid-cron.log 2>&1 &
+
+exit 0

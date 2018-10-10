@@ -1,0 +1,8 @@
+---
+- name: Generate Sanoid Cron Scripts
+  template:
+    src: sanoid-cron.j2
+    dest: /usr/local/bin/sanoid-cron
+    owner: root
+    group: root
+    mode: 0755
