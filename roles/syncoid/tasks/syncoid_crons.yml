@@ -3,7 +3,7 @@
   cron:
     name: syncoid-cron
     job: /usr/local/bin/syncoid-cron
-    minutes: "{{ syncoid_cron_minutes }}"
-    hours: "{{ syncoid_cron_hours }}"
+    minute: "{{ syncoid_cron_minutes }}"
+    hour: "{{ syncoid_cron_hours }}"
     user: root
     state: present

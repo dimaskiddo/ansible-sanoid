@@ -3,7 +3,7 @@
   cron:
     name: sanoid-cron
     job: /usr/local/bin/sanoid-cron
-    minutes: "{{ sanoid_cron_minutes }}"
-    hours: "{{ sanoid_cron_hours }}"
+    minute: "{{ sanoid_cron_minutes }}"
+    hour: "{{ sanoid_cron_hours }}"
     user: root
     state: present
