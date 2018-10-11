@@ -36,4 +36,4 @@
   fail:
     msg: "ZFS Dataset not Found"
   when:
-    - zfs_dataset_lists.stdout.find(sanoid_zfs_dataset) != -1
+    - zfs_dataset_lists.stdout.find(sanoid_zfs_dataset) == -1
