@@ -5,6 +5,10 @@
   when:
     - inventory_hostname in groups['syncoid']
 
+- include: syncoid_crons.yml
+  when:
+    - inventory_hostname in groups['syncoid']
+
 - include: syncoid_directories.yml
   when:
     - inventory_hostname in groups['syncoid']
@@ -12,6 +16,8 @@
 - include: sanoid_packages.yml
   when:
     - inventory_hostname in groups['sanoid']
+
+- include: sanoid_crons.yml
 
 - include: sanoid_directories.yml
   when:

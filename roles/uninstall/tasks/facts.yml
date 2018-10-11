@@ -30,7 +30,7 @@
 - name: Set Host Facts
   set_fact:
     sanoid_zfs_dataset: "{{ sanoid_zfs_dataset | default(default_value, true) }}"
-    sanoid_master: "{{ sanoid_master | default(default_value, true) }}"
+    syncoid_master: "{{ syncoid_master | default(default_value, true) }}"
 
 - name: Fail if ZFS Dataset not Found
   fail:

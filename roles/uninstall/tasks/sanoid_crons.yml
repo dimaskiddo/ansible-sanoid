@@ -1,0 +1,5 @@
+---
+- name: Uninstall Sanoid Cron Job
+  cron:
+    name: sanoid-cron
+    state: absent

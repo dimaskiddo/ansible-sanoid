@@ -1,0 +1,5 @@
+---
+- name: Uninstall Syncoid Cron Job
+  cron:
+    name: syncoid-cron
+    state: absent
