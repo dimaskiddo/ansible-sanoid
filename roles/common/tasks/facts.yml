@@ -47,7 +47,7 @@
     syncoid_snapshot_keep_daily: "{{ syncoid_snapshot_keep_daily | default(default_value, true) }}"
     syncoid_snapshot_keep_monthly: "{{ syncoid_snapshot_keep_monthly | default(default_value, true) }}"
     syncoid_snapshot_keep_yearly: "{{ syncoid_snapshot_keep_yearly | default(default_value, true) }}"
-    sanoid_master: "{{ sanoid_master | default(default_value, true) }}"
+    syncoid_master: "{{ syncoid_master | default(default_value, true) }}"
 
 - name: Fail if ZFS Dataset not Found
   fail:
