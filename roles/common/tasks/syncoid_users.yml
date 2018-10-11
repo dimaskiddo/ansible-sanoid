@@ -1,0 +1,23 @@
+---
+- name: Create Syncoid Group
+  group:
+    name: syncoid
+    system: yes
+    state: present
+
+- name: Create Syncoid User
+  user:
+    name: syncoid
+    group: syncoid
+    shell: /bin/bash
+    create_home: yes
+    system: yes
+    state: present
+
+- name: Allow Syncoid User to Have Passwordless Sudo
+  lineinfile:
+    path: /etc/sudoers
+    line: "syncoid ALL=(ALL:ALL) NOPASSWD: ALL"
+    insertafter: "^%sudo"
+    validate: "visudo -cf %s"
+    state: present

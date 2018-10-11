@@ -1,0 +1,18 @@
+---
+- name: Deallow Syncoid User to Have Passwordless Sudo
+  lineinfile:
+    path: /etc/sudoers
+    line: "syncoid ALL=(ALL:ALL) NOPASSWD: ALL"
+    validate: "visudo -cf %s"
+    state: absent
+
+- name: Remove Syncoid User
+  user:
+    name: syncoid
+    force: yes
+    state: absent
+
+- name: Remove Syncoid Group
+  group:
+    name: syncoid
+    state: absent
