@@ -11,6 +11,11 @@
   when:
     - inventory_hostname in groups['sanoid']
 
+- include: syncoid_users.yml
+  when:
+    - inventory_hostname in groups['sanoid']
+    - hostvars[inventory_hostname].syncoid_master
+
 - include: syncoid_directories.yml
   when:
     - inventory_hostname in groups['syncoid']

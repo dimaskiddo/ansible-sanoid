@@ -13,6 +13,11 @@
   when:
     - inventory_hostname in groups['syncoid']
 
+- include: syncoid_users.yml
+  when:
+    - inventory_hostname in groups['sanoid']
+    - hostvars[inventory_hostname].syncoid_master
+
 - include: sanoid_packages.yml
   when:
     - inventory_hostname in groups['sanoid']
