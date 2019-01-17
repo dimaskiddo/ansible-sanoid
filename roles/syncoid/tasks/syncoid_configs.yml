@@ -8,3 +8,21 @@
     mode: 0644
   with_items:
     - /var/log/syncoid-cron.log
+
+- name: Add Syncoid Log to be Rotated
+  blockinfile:
+    path: /etc/logrotate.d/syncoid
+    state: present
+    create: yes
+    owner: root
+    group: root
+    mode: 0644
+    block: |
+      /var/log/syncoid-cron.log {
+        create 0644 root root
+        rotate 14
+        daily
+        compress
+        missingok
+        notifempty
+      }

@@ -1,4 +1,9 @@
 ---
+- name: Uninstall Syncoid Log from Rotated
+  file:
+    path: /etc/logrotate.d/syncoid
+    state: absent
+
 - name: Uninstall Syncoid Log
   file:
     path: /var/log/syncoid-cron.log
