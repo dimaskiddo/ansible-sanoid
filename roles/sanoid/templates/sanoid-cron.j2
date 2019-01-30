@@ -1,11 +1,13 @@
 #!/bin/bash
 
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
 (
  echo "--------------------------------------------------" 
  echo $(date) sanoid start
  
  echo ""
- /usr/local/bin/sanoid --cron --verbose
+ run-one sanoid --cron --verbose
  echo ""
 
  echo $(date) sanoid end
