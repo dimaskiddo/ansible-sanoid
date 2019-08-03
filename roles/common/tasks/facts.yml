@@ -38,9 +38,7 @@
     sanoid_snapshot_keep_yearly: "{{ sanoid_snapshot_keep_yearly | default(default_value, true) }}"
     sanoid_auto_snap: "{{ sanoid_auto_snap | default(default_value, true) }}"
     sanoid_auto_prune: "{{ sanoid_auto_prune | default(default_value, true) }}"
-    sanoid_zfs_dataset: "{{ sanoid_zfs_dataset | default(default_value, true) }}"
-    sanoid_zfs_process_childern_only: "{{ sanoid_zfs_process_childern_only | default(default_value, true) }}"
-    sanoid_zfs_recursive: "{{ sanoid_zfs_recursive | default(default_value, true) }}"
+    sanoid_zfs_datasets: "{{ sanoid_zfs_datasets | default(default_value, true) }}"
     syncoid_cron_hours: "{{ syncoid_cron_hours | default(default_value, true) }}"
     syncoid_cron_minutes: "{{ syncoid_cron_minutes | default(default_value, true) }}"
     syncoid_snapshot_keep_hourly: "{{ syncoid_snapshot_keep_hourly | default(default_value, true) }}"
@@ -52,5 +50,6 @@
 - name: Fail if ZFS Dataset not Found
   fail:
     msg: "ZFS Dataset not Found"
+  loop: "{{ sanoid_zfs_datasets | default([]) }}"
   when:
-    - zfs_dataset_lists.stdout.find(sanoid_zfs_dataset) == -1
+    - zfs_dataset_lists.stdout.find(item.dataset) == -1

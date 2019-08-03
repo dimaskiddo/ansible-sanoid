@@ -27,13 +27,7 @@ sanoid_auto_snap: 'true'
 sanoid_auto_prune: 'true'
 
 # Default Value for Sanoid ZFS Dataset Name
-sanoid_zfs_dataset: 'data/persistent'
-
-# Default Value for Sanoid ZFS Process Childern Only
-sanoid_zfs_process_childern_only: 'true'
-
-# Default Value for Sanoid ZFS Recursive Snapshot
-sanoid_zfs_recursive: 'true'
+sanoid_zfs_dataset: {}
 
 # Default Value for Syncoid Cron Hours
 syncoid_cron_hours: '23'
