@@ -39,7 +39,7 @@
     sanoid_auto_snap: "{{ sanoid_auto_snap | default(default_value, true) }}"
     sanoid_auto_prune: "{{ sanoid_auto_prune | default(default_value, true) }}"
     sanoid_zfs_dataset: "{{ sanoid_zfs_dataset | default(default_value, true) }}"
-    sanoid_zfs_process_childern_only: "{{ sanoid_zfs_process_childern_only | default(default_value, true) }}"
+    sanoid_zfs_process_children_only: "{{ sanoid_zfs_process_children_only | default(default_value, true) }}"
     sanoid_zfs_recursive: "{{ sanoid_zfs_recursive | default(default_value, true) }}"
     syncoid_cron_hours: "{{ syncoid_cron_hours | default(default_value, true) }}"
     syncoid_cron_minutes: "{{ syncoid_cron_minutes | default(default_value, true) }}"

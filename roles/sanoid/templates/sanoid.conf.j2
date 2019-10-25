@@ -1,7 +1,7 @@
 ## ZFS Section ##
 [{{ sanoid_zfs_dataset }}]
   use_template = production
-  process_children_only = {% if sanoid_zfs_process_childern_only %}yes{% else %}no{% endif %}{{''}}
+  process_children_only = {% if sanoid_zfs_process_children_only %}yes{% else %}no{% endif %}{{''}}
   recursive = {% if sanoid_zfs_recursive %}yes{% else %}no{% endif %}{{''}}
 
 ## Template Section ##
