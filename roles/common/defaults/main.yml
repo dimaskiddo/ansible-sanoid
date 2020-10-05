@@ -26,14 +26,14 @@ sanoid_auto_snap: 'true'
 # Default Value for Sanoid Auto Prune
 sanoid_auto_prune: 'true'
 
-# Default Value for Sanoid ZFS Dataset Name
-sanoid_zfs_dataset: 'data/persistent'
-
-# Default Value for Sanoid ZFS Process Children Only
-sanoid_zfs_process_children_only: 'true'
-
-# Default Value for Sanoid ZFS Recursive Snapshot
-sanoid_zfs_recursive: 'true'
+# A list of datasets to snapshot
+# Taking the form
+# -
+#   dataset: dataset_name
+#   template: production
+#   process_children_only: false
+#   recursive: true
+sanoid_zfs_datasets: []
 
 # Default Value for Syncoid Cron Hours
 syncoid_cron_hours: '23'

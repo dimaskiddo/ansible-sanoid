@@ -7,7 +7,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
  echo $(date) sanoid start
 
  echo ""
- run-one sanoid --cron --verbose
+ {% if ansible_distribution == "Ubuntu" %}run-one{% endif %} sanoid --cron --verbose
  echo ""
 
  echo $(date) sanoid end

@@ -1,9 +1,10 @@
 ## ZFS Section ##
-[{{ sanoid_zfs_dataset }}]
-  use_template = production
-  process_children_only = {% if sanoid_zfs_process_children_only %}yes{% else %}no{% endif %}{{''}}
-  recursive = {% if sanoid_zfs_recursive %}yes{% else %}no{% endif %}{{''}}
-
+{% for item in sanoid_zfs_datasets %}
+[{{ item.dataset }}]
+  use_template = {% if item.template %}{{ item.template }}{% else %}production{% endif %}{{''}}
+  process_children_only = {% if item.process_children_only %}yes{% else %}no{% endif %}{{''}}
+  recursive = {% if item.recursive %}yes{% else %}no{% endif %}{{''}}
+{% endfor %}
 ## Template Section ##
 [template_production]
   hourly       = {% if inventory_hostname not in groups['syncoid'] %}{{ sanoid_snapshot_keep_hourly }}{% else %}{{ syncoid_snapshot_keep_hourly }}{% endif %}{{''}}
