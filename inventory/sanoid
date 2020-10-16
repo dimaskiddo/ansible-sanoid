@@ -1,5 +1,5 @@
 [all:vars]
-sanoid_zfs_dataset=[{ dataset: "mydataset1", process_childern_only: "true", recursive: "true" }]
+sanoid_zfs_datasets=[{ dataset: "dataset1", process_childern_only: "true", recursive: "true" }]
 
 [sanoid]
 10.10.250.13 syncoid_master=true
