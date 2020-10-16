@@ -29,11 +29,19 @@
 
 - name: Set Host Facts
   set_fact:
-    sanoid_zfs_dataset: "{{ sanoid_zfs_dataset | default(default_value, true) }}"
+    sanoid_zfs_datasets: "{{ sanoid_zfs_datasets | default(default_value, true) }}"
     syncoid_master: "{{ syncoid_master | default(default_value, true) }}"
 
-- name: Fail if ZFS Dataset not Found
+- name: Fail if ZFS Datasets is Empty
   fail:
-    msg: "ZFS Dataset not Found"
+    msg: "ZFS Datasets is Empty"
   when:
-    - zfs_dataset_lists.stdout.find(sanoid_zfs_dataset) == -1
+    - "{{ sanoid_zfs_datasets | default([]) }} | length > 0"
+
+- name: Fail if ZFS Datasets not Found
+  fail:
+    msg: "ZFS Datasets not Found"
+  with_items:
+    - "{{ sanoid_zfs_datasets }}"
+  when:
+    - zfs_dataset_lists.stdout.find(item.dataset) == -1

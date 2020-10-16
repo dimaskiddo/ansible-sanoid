@@ -1,6 +1,12 @@
 ---
-# Default Value for Sanoid ZFS Dataset Name
-sanoid_zfs_dataset: 'data/persistent'
+# A list of datasets to snapshot
+# Taking the form
+# -
+#   dataset: dataset_name
+#   template: production
+#   process_children_only: false
+#   recursive: true
+sanoid_zfs_datasets: []
 
 # Default Value for Syncoid Master
 syncoid_master: 'false'
