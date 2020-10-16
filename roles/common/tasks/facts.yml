@@ -51,12 +51,12 @@
   fail:
     msg: "ZFS Datasets is Empty"
   when:
-    - "{{ sanoid_zfs_datasets | default([]) | length }} > 0"
+    - "{{ sanoid_zfs_datasets | default([]) }} | length > 0"
 
-- name: Fail if ZFS Dataset not Found
+- name: Fail if ZFS Datasets not Found
   fail:
-    msg: "ZFS Dataset not Found"
+    msg: "ZFS Datasets not Found"
   with_items:
-    - "{{ sanoid_zfs_datasets | default([]) }}"
+    - "{{ sanoid_zfs_datasets }}"
   when:
     - zfs_dataset_lists.stdout.find(item.dataset) == -1
