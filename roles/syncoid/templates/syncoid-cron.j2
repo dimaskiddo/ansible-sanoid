@@ -9,10 +9,11 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
  {% for sanoid_host in groups['sanoid'] %}
  {%   if hostvars[sanoid_host].syncoid_master %}
- echo "Backing-up {{ sanoid_zfs_dataset }} from {{ hostvars[sanoid_host].sanoid_ip }}"
- zfs create -p {{ sanoid_zfs_dataset }}
- syncoid -r syncoid@{{ hostvars[sanoid_host].sanoid_ip }}:{{ sanoid_zfs_dataset }} {{ sanoid_zfs_dataset }}/{{ hostvars[sanoid_host].sanoid_ip }}
+ {%     for item in sanoid_zfs_datasets %}
+ echo "Backing-up {{ item.dataset }} from {{ hostvars[sanoid_host].sanoid_ip }}"
+ syncoid -r syncoid@{{ hostvars[sanoid_host].sanoid_ip }}:{{ item.dataset }} {{ item.dataset }}/{{ hostvars[sanoid_host].sanoid_ip }}
  echo "" 
+ {%     endfor %}
  {%   endif %}
  {% endfor %}
 

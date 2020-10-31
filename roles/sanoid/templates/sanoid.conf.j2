@@ -1,12 +1,12 @@
 ## ZFS Section ##
 {% for item in sanoid_zfs_datasets %}
 [{{ item.dataset }}]
-  use_template = {% if item.template %}{{ item.template }}{% else %}production{% endif %}{{''}}
+  use_template = {% if item.template %}{{ item.template }}{% else %}default{% endif %}{{''}}
   process_children_only = {% if item.process_children_only %}yes{% else %}no{% endif %}{{''}}
   recursive = {% if item.recursive %}yes{% else %}no{% endif %}{{''}}
 {% endfor %}
 ## Template Section ##
-[template_production]
+[template_default]
   hourly       = {% if inventory_hostname not in groups['syncoid'] %}{{ sanoid_snapshot_keep_hourly }}{% else %}{{ syncoid_snapshot_keep_hourly }}{% endif %}{{''}}
   daily        = {% if inventory_hostname not in groups['syncoid'] %}{{ sanoid_snapshot_keep_daily }}{% else %}{{ syncoid_snapshot_keep_daily }}{% endif %}{{''}}
   monthly      = {% if inventory_hostname not in groups['syncoid'] %}{{ sanoid_snapshot_keep_monthly }}{% else %}{{ syncoid_snapshot_keep_monthly }}{% endif %}{{''}}
