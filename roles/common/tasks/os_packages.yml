@@ -16,3 +16,5 @@
     - rsync
     - logrotate
     - libcapture-tiny-perl
+    - lzop
+    - mbuffer
