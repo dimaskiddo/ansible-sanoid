@@ -2,8 +2,8 @@
 {% for item in sanoid_zfs_datasets %}
 [{{ item.dataset }}]
   use_template = default{{''}}
-  process_children_only = {% if item.process_children_only %}yes{% else %}no{% endif %}{{''}}
-  recursive = {% if item.recursive %}yes{% else %}no{% endif %}{{''}}
+  process_children_only = {% if item.process_children_only == 'true' %}yes{% else %}no{% endif %}{{''}}
+  recursive = {% if item.recursive == 'true' %}yes{% else %}no{% endif %}{{''}}
 {% endfor %}
 ## Template Section ##
 [template_default]
